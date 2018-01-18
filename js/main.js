@@ -1,3 +1,10 @@
+/* Treehouse Techdegree
+Cameron O'Brien
+Project 02
+Pagination and Content
+*/
+
+
 // Global variables 
 const $page = $('.page');
 const $studentList = $('.student-item');
@@ -40,10 +47,6 @@ showPage( 1, $studentList );
 // Put pagination navigation links on page
 appendPageLinks($studentList);
 
-
-
-
-
 // Create and append student search elements to page
 pageHeader = document.querySelector('.page-header');
 searchContainer = document.createElement('div');
@@ -56,3 +59,24 @@ $(searchContainer).css("float", "right");
 $(searchContainer).append(studentSearchInput);
 $(searchContainer).append(studentSearchButton);
 
+// Get input from student search field
+const $searchInput = $(studentSearchInput);
+// On click of student search button, search through student list for name or email
+studentSearchButton.addEventListener('click', () => {
+    const $searchReturn = $searchInput.val().toLowerCase();
+    
+    let searchArr = [];
+    for ( let i =0; i < $studentList.length; i++ ) {
+        $studentList[i].style.display = 'block';
+        const $studentLi = $($studentList[i]);
+        const $studentName = $studentLi.find("h3").text().toLowerCase();
+        const $studentEmail = $studentLi.find("email").text().toLowerCase();
+
+        if ( $studentName.includes($searchReturn) || $studentEmail.includes($searchReturn) ) {
+            searchArr.push($studentLi);
+        } else {
+            $studentList[i].style.display = 'none';
+        }
+    }
+    console.log(searchArr);
+});
