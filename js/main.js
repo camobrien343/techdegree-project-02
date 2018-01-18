@@ -40,3 +40,19 @@ showPage( 1, $studentList );
 // Put pagination navigation links on page
 appendPageLinks($studentList);
 
+
+
+
+
+// Create and append student search elements to page
+pageHeader = document.querySelector('.page-header');
+searchContainer = document.createElement('div');
+$(pageHeader).append(searchContainer);
+studentSearchInput = document.createElement('input');
+studentSearchButton = document.createElement('button');
+$(studentSearchButton).html("Submit");
+studentSearchInput.placeholder = "Search for a student";
+$(searchContainer).css("float", "right");
+$(searchContainer).append(studentSearchInput);
+$(searchContainer).append(studentSearchButton);
+
