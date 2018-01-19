@@ -74,7 +74,7 @@ const $searchInput = $(studentSearchInput);
 // On click of student search button, search through student list for name or email
 studentSearchButton.addEventListener('click', () => {
     const $searchReturn = $searchInput.val().toLowerCase();
-    let searchArr = [];
+    let searchResults = [];
     for ( let i =0; i < $studentList.length; i++ ) { // Search student list for name or email match
         $studentList[i].style.display = 'block';
         const $studentLi = $($studentList[i]);
@@ -89,10 +89,9 @@ studentSearchButton.addEventListener('click', () => {
             $studentList[i].style.display = 'none';        
         }
     }
-    console.log(searchArr);
+    console.log(searchResults);
 // If no match for search results, alert user with alert box
-    if (searchArr[0] == undefined) {
+    if (searchResults[0] === undefined) {
         alert('No students match your search, please try again.');
-        return $studentList;
     }
 });
